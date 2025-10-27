@@ -1,0 +1,213 @@
+\documentclass[10pt, letterpaper]{article}
+
+% ======= Packages and settings =======
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\usepackage[
+    ignoreheadfoot,
+    top=2.5cm, bottom=2.5cm,
+    left=2cm, right=2cm,
+    footskip=1.0cm
+]{geometry}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\needspace{4\baselineskip}\bfseries\LARGE}
+  {}{0pt}{}%
+  [\vspace{-4pt}\titlerule]   % 这一行会画横线
+
+\titlespacing{\section}{-2pt}{0.3cm}{0.2cm}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{setspace}
+\setstretch{1.05}  % 全局行距调整
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage{times} % 使用Times New Roman字体
+\usepackage[T1]{fontenc} % 确保字体编码正确
+\usepackage[
+    pdftitle={Yunlong_Liu - CV},
+    pdfauthor={Yunlong_Liu},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\pdfstringdefDisableCommands{%
+  \def\faEnvelope[#1]{}%
+  \def\faMapMarker*{}%
+  \def\faPhone*{}%
+  \def\faGithub{}%
+  \def\faLinkedinIn{}%
+  \def\textsubscript#1{#1}% 如果你用过 \textsubscript
+}
+\usepackage{paracol}
+\usepackage{changepage}
+\usepackage{lastpage}
+\usepackage{needspace}
+
+% ======= Style adjustments =======
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\renewcommand\labelitemi{$\bullet$}
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.01cm, parsep=0.01cm, partopsep=0pt, itemsep=0pt,
+        leftmargin=2.1em, labelwidth=2em, labelsep=0em,
+        align=left
+    ]
+}{\end{itemize}}
+
+\newenvironment{onecolentry}{\begin{adjustwidth}{0.2cm}{0.2cm}}{\end{adjustwidth}}
+\newenvironment{twocolentry}[2][]{%
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5cm}
+    \begin{paracol}{2}
+}{%
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+% ======= Document =======
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+
+% ======= Header =======
+\begin{center}
+    {\fontsize{24pt}{24pt}\selectfont \textbf{Yunlong Liu}}\\[4pt]
+    {\footnotesize Nanjing, Jiangsu, China $|$ \href{mailto:lyl_arch@seu.edu.cn}{lyl\_arch@seu.edu.cn}}
+\end{center}
+
+\vspace{-0.3cm}
+\begin{center}
+    \textit{Research Interests: Urban Analytics, Digital Twin, Graph Neural Network, Multimodal Fusion, Large Language Model}
+\end{center}
+
+% ======= Education =======
+\section{Education}
+\begin{onecolentry}
+    \textbf{Southeast University}, Nanjing, China \hfill Sep 2023 -- Jun 2026\\
+    M.Arch in Urban Design, GPA: 3.7/4.0\\
+    \textit{Relevant Coursework:} Programming Fundamentals for Architecture (90), Big Data Methods and Applications in Urban Planning (92), Urban Big Data Analysis and Intelligent Applications (91), Digital Technology Applications in Historic Environments (90)
+\end{onecolentry}
+
+\vspace{0.3\baselineskip}
+\begin{onecolentry}
+    \textbf{Shandong Jianzhu University}, Jinan, China \hfill Sep 2018 -- Jun 2023\\
+    B.Arch in Architecture, GPA: 3.3/4.0\\
+    \textit{Relevant Coursework:} Advanced Mathematics (91), Computer Fundamentals (92)
+\end{onecolentry}
+
+% ======= Research Experience =======
+\section{Research Experience}
+
+% --- National Key R&D Program ---
+\begin{onecolentry}
+\textbf{National Key R\&D Program of China — Automatic generation and optimization of city-scale green performance models} \hfill Nov 2024 -- Present\\
+\textit{Graduate Research Assistant}
+  \begin{highlights}
+    \item \textbf{My Role:} Designing system architecture and integrating optimal models for multimodal data integration\\[-12pt]
+    \item \textbf{Method:} Building LLM-enhanced urban knowledge graph to structure heterogeneous data, then training GNN on this graph to extract node features for urban performance prediction and optimization\\[-12pt]
+    \item \textbf{Progress:} Completed initial framework design and data preprocessing pipeline, currently optimizing model performance at city scale
+  \end{highlights}
+\end{onecolentry}
+
+\vspace{0.15cm}
+
+% --- Independent Study ---
+\begin{onecolentry}
+\textbf{Independent Study: SAM-GPT semantic enhancement framework for street view imagery analysis} \hfill Nov 2024\\
+\textit{Self-directed Research}
+  \begin{highlights}
+    \item \textbf{Contribution:} Developed framework addressing LLM inaccuracy in object localization for urban analytics\\[-12pt]
+    \item \textbf{Method:} Integrated SAM's panoptic segmentation masks as spatial guidance for GPT models to improve object recognition accuracy\\[-12pt]
+    \item \textbf{Achievement:} Achieved significant improvement in LLM object description accuracy; framework adopted by research colleagues for Architectural Society of China 2025 Annual Conference presentation
+  \end{highlights}
+\end{onecolentry}
+
+\vspace{0.15cm}
+
+% --- Master's Thesis Research ---
+\begin{onecolentry}
+\textbf{Master's Thesis Research: Multimodal data fusion for urban carbon emission simulation model — A case study of Nanjing} \hfill Apr 2024 -- Present\\
+\textit{Independent Research under Prof. Yu Zhang}
+  \begin{highlights}
+    \item \textbf{Contribution:} Designing multimodal fusion framework for city-scale carbon emission prediction, focusing on Nanjing as case study\\[-12pt]
+    \item \textbf{Method:} Developing multimodal fusion strategy integrating meteorological time series, remote sensing, and statistical data with attention mechanism optimization\\[-12pt]
+    \item \textbf{Progress:} Completed data collection from four modalities and framework design; implementing attention mechanism and model training
+  \end{highlights}
+\end{onecolentry}
+
+% ======= Publications =======
+\section{Publications}
+
+% --- Publication 1: Decoding the 24-hour city ---
+\begin{onecolentry}
+\textbf{Y. Liu} and Y. Zhang, ``Decoding the 24-hour city: A framework for cross-domain impact prediction integrating knowledge graph and graph neural network,'' accepted for oral presentation at \textit{the 59th ISOCARP World Planning Congress}, Riyadh, Saudi Arabia, Dec. 2025. \textbf{[Oral presentation forthcoming]}
+  \begin{highlights}
+    \item \textbf{Contribution:} Developed novel framework combining knowledge graphs and GNNs to integrate multimodal urban data (remote sensing, GIS, energy consumption) for predicting impacts across three urban sectors\\[-12pt]
+    \item \textbf{Method:} Built urban ontology for data integration, constructed semantically-enriched knowledge graph, and implemented semantic-aware GNN for cross-domain reasoning\\[-12pt]
+    \item \textbf{Achievement:} Achieved about 20\% improvement in cross-domain prediction accuracy, enabling planners to anticipate cascading policy effects across urban systems
+  \end{highlights}
+\end{onecolentry}
+
+\vspace{0.15cm}
+
+% --- Publication 2: From pixels to predicates ---
+\begin{onecolentry}
+\textbf{Y. Liu}, S. Li, P. Liu, Y. Zhang, and R. Stouffs, ``From pixels to predicates: Structuring urban perception with scene graphs,'' abstract accepted at \textit{31st International Conference of CAADRIA}, 2026. \textbf{[Abstract accepted; Full paper submitted]}
+  \begin{highlights}
+    \item \textbf{Contribution:} Developed scene graph-based framework transforming street view imagery into structured relational data, bridging gap between low-level pixel analysis and high-level semantic understanding in urban analytics\\[-12pt]
+    \item \textbf{Method:} Applied PSGTR model to extract scene graphs from SVIs, then trained Heterogeneous Graph Autoencoder (HeteroGAE) with unsupervised pre-training on the Place Pulse dataset (1.2M images) to learn relational embeddings; validated generalization on New York and Chicago street view datasets\\[-12pt]
+    \item \textbf{Achievement:} Identified novel micro-scale urban patterns through relational analysis, discovering safety-perception correlations like ``(graffiti)-[painted on]->(wall)'' that are undetectable by conventional pixel-based methods; demonstrated robust cross-city transferability
+  \end{highlights}
+\end{onecolentry}
+
+\vspace{0.15cm}
+
+% --- Publication 3: Chinese Superblocks Regeneration ---
+\begin{onecolentry}
+Y. Tang, \textbf{Y. Liu}, P. Wang, J. Yin, S. Li, P. Liu, L. Li, P. F. Yuan, and R. Stouffs, ``Chinese superblocks regeneration: Street network learning with an edge-centered unsupervised graph neural network,'' abstract accepted at \textit{31st International Conference of CAADRIA}, 2026. \textbf{[Abstract accepted]}
+  \begin{highlights}
+    \item \textbf{My Role:} Developed edge-centered unsupervised GNN framework analyzing 7,000 street segments across seven Chinese cities for superblock regeneration\\[-12pt]
+    \item \textbf{Method:} Constructed ego-graphs with 250m buffer zones using route structure theory, employed multi-layer GCNs with contrastive learning to generate 128-dimensional embeddings\\[-12pt]
+    \item \textbf{Achievement:} Identified four distinct structural types (accessibility hubs, transitional connectors, inward-facing branches, peripheral buffers) enabling targeted regeneration strategies and cross-city transfer
+  \end{highlights}
+\end{onecolentry}
+
+\vspace{0.15cm}
+
+% --- Publication 4: Regional Urban Development ---
+\begin{onecolentry}
+\textbf{Y. Liu} and Y. Zhang, ``Research on regional urban development level based on club convergence phenomenon: A case study of the Yangtze River Delta urban agglomeration,'' in \textit{Proceedings of the China Urban Planning Annual Conference}, June 2024. \textbf{[Published]}
+  \begin{highlights}
+    \item \textbf{Contribution:} Analyzed regional urban development patterns in Yangtze River Delta using club convergence theory\\[-12pt]
+    \item \textbf{Method:} Applied Markov transition matrix and spatial Markov chain analysis to examine urban development trajectories and spatial spillover effects\\[-12pt]
+    \item \textbf{Achievement:} Identified ``poverty trap'' risks in western cities while eastern cities showed higher upward mobility, providing strategic insights for regional policy
+  \end{highlights}
+\end{onecolentry}
+
+% ======= Skills =======
+\section{Technical Skills}
+\begin{onecolentry}
+    Programming \& ML: Python, Git, Graph Neural Networks, Deep Learning \\
+    Spatial Analysis \& Data Processing: GIS (QGIS, ArcGIS), Remote Sensing, Multimodal Data Fusion, Knowledge Graph \\
+    Languages: Mandarin Chinese (native), English (fluent)
+\end{onecolentry}
+
+% ======= Academic Activities =======
+\section{Academic Activities \& Honors}
+\begin{onecolentry}
+    Participant, DigitalFutures Workshop – Habitat Representation: Graph Neural Networks for Urban Examination and Urban Design, Tongji University, 2025\\[0.05cm]
+    Participant, DigitalFutures Workshop – Computational Design with shape Grammar, Tongji University, 2023\\[0.05cm]
+    Participant, Southeast University–University of Pennsylvania Joint Summer Workshop, 2024\\[0.05cm]
+    First Prize, University-level Regional Planning and Design Project — Shunde Village Redevelopment, 2024\\ [0.05cm]
+    Academic Merit Scholarship, Southeast University, 2023, 2024\\[0.05cm]
+    Outstanding Bachelor's Thesis Award, Shandong Jianzhu University, 2023
+\end{onecolentry}
+
+\end{CJK*}
+\end{document}
