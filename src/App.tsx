@@ -1,5 +1,10 @@
 import cvFile from '../cv/cv.pdf?url';
 
+type NavLink = {
+  label: string;
+  href: string;
+};
+
 type ContactLink = {
   label: string;
   value: string;
@@ -13,12 +18,20 @@ type EducationItem = {
   details: string;
 };
 
+type CapabilityColumn = {
+  title: string;
+  items: string[];
+};
+
+type ResearchStatus = 'CURRENT' | 'UPCOMING' | 'ARCHIVED';
+
 type ResearchProject = {
   period: string;
   title: string;
   affiliation: string;
   role: string;
   highlights: string[];
+  status: ResearchStatus;
 };
 
 type Publication = {
@@ -28,6 +41,14 @@ type Publication = {
   summary: string;
 };
 
+const navLinks: NavLink[] = [
+  { label: 'Overview', href: '#about' },
+  { label: 'Research', href: '#research' },
+  { label: 'Capabilities', href: '#capabilities' },
+  { label: 'Publications', href: '#publications' },
+  { label: 'Collaboration', href: '#contact' },
+];
+
 const contactLinks: ContactLink[] = [
   { label: 'Email', value: 'lyl_arch@seu.edu.cn', href: 'mailto:lyl_arch@seu.edu.cn' },
   { label: 'Location', value: 'Nanjing, Jiangsu, China' },
@@ -35,265 +56,368 @@ const contactLinks: ContactLink[] = [
 
 const focusAreas = [
   'Urban Analytics',
-  'Digital Twin',
+  'Digital Twin Systems',
   'Graph Neural Networks',
   'Multimodal Fusion',
   'Large Language Models',
 ];
 
 const technicalExpertise = [
-  'Python · Deep Learning · Graph Neural Networks',
-  'GIS (QGIS / ArcGIS) and Remote Sensing',
-  'Knowledge Graph Modelling and Semantic Reasoning',
+  'Python / Deep Learning / Graph Neural Networks',
+  'GIS (QGIS, ArcGIS) and Remote Sensing',
+  'Knowledge Graph Modeling and Semantic Reasoning',
   'Urban Multimodal Data Integration and Prediction',
 ];
 
 const languages = ['Mandarin Chinese (native)', 'English (fluent)'];
 
+const capabilityColumns: CapabilityColumn[] = [
+  { title: 'Focus Areas', items: focusAreas },
+  { title: 'Technical Stack', items: technicalExpertise },
+  { title: 'Languages', items: languages },
+];
+
 const education: EducationItem[] = [
   {
-    period: 'Sep 2023 – Jun 2026 (expected)',
+    period: 'Sep 2023 - Jun 2026 (expected)',
     school: 'Southeast University, Nanjing',
-    degree: 'M.Arch in Urban Design · GPA 3.7 / 4.0',
+    degree: 'M.Arch in Urban Design, GPA 3.7 / 4.0',
     details:
-      'Relevant coursework: Programming Fundamentals for Architecture, Big Data Methods in Urban Planning, Urban Big Data Analytics, Digital Technology in Historic Environments.',
+      'Coursework includes programming for architecture, big data methods, urban data analytics, and digital technology for historic environments.',
   },
   {
-    period: 'Sep 2018 – Jun 2023',
+    period: 'Sep 2018 - Jun 2023',
     school: 'Shandong Jianzhu University, Jinan',
-    degree: 'B.Arch in Architecture · GPA 3.3 / 4.0',
-    details: 'Relevant coursework: Advanced Mathematics, Computer Fundamentals.',
+    degree: 'B.Arch in Architecture, GPA 3.3 / 4.0',
+    details: 'Coursework includes advanced mathematics and computer fundamentals.',
   },
 ];
 
 const researchProjects: ResearchProject[] = [
   {
-    period: 'Nov 2024 – Present',
-    title: 'National Key R&D Program of China: City-scale Green Performance Model Automation',
-    affiliation: 'Graduate Research Assistant',
-    role: 'Designing system architecture and integrating multimodal optimisation models that support large-scale urban performance analysis.',
+    period: 'Nov 2024 - Present',
+    title: 'City-scale Green Performance Model Automation',
+    affiliation: 'National Key R&D Program of China',
+    role: 'Graduate Research Assistant',
     highlights: [
-      'Constructed an LLM-augmented urban knowledge graph to harmonise heterogeneous spatial and environmental datasets.',
-      'Trained graph neural networks on the knowledge graph to extract node-level representations for performance prediction and optimisation.',
-      'Delivered the initial framework and data preprocessing pipeline; currently tuning models for city-scale reliability.',
+      'Built an LLM-augmented urban knowledge graph to harmonise spatial and environmental datasets.',
+      'Trained graph neural networks on the graph to deliver node-level predictions for performance optimisation.',
+      'Delivered the initial system architecture and data pipeline; tuning models for city-scale reliability.',
     ],
+    status: 'CURRENT',
   },
   {
     period: 'Nov 2024',
-    title: 'SAM-GPT Semantic Enhancement Framework for Street-view Imagery Analysis',
+    title: 'SAM-GPT for Street-view Semantic Enhancement',
     affiliation: 'Independent Research',
-    role: 'Investigated LLM inaccuracies in street-scene localisation and proposed a multimodal remedy.',
+    role: 'Research Lead',
     highlights: [
-      'Introduced SAM panoptic segmentation masks as spatial priors to guide large language models.',
-      'Recorded a marked improvement in object description accuracy; the framework supports a forthcoming presentation at the Architectural Society of China 2025 Annual Conference.',
+      'Injected SAM panoptic segmentation as spatial priors to guide large language models.',
+      'Improved localisation accuracy for street-scene narratives; preparing for Architectural Society of China 2025.',
     ],
+    status: 'UPCOMING',
   },
   {
-    period: 'Apr 2024 – Present',
-    title: 'Master’s Thesis: Multimodal Fusion for Urban Carbon Emission Simulation – Nanjing Case Study',
-    affiliation: 'Supervised by Prof. Yu Zhang',
-    role: 'Developing an interpretable multimodal architecture for city-scale carbon emission forecasting.',
+    period: 'Apr 2024 - Present',
+    title: 'Multimodal Fusion for Urban Carbon Simulation',
+    affiliation: 'Master Thesis, Southeast University',
+    role: 'Principal Investigator',
     highlights: [
-      'Integrates meteorological time series, remote sensing imagery, and statistical data with attention-based fusion.',
-      'Completed data acquisition and system blueprint; implementing attention modules and end-to-end training.',
+      'Designing an interpretable fusion pipeline for meteorology, remote sensing, and statistical data.',
+      'Implementing attention modules and end-to-end training for reliable carbon forecasting.',
     ],
+    status: 'UPCOMING',
   },
 ];
 
 const publications: Publication[] = [
   {
     title:
-      'Decoding the 24-hour City: A Cross-domain Impact Prediction Framework Integrating Knowledge Graphs and Graph Neural Networks',
-    venue: '59th ISOCARP World Planning Congress · Riyadh, Saudi Arabia · 2025',
-    status: 'Oral presentation · forthcoming',
+      'Decoding the 24-hour City: A Cross-domain Impact Prediction Framework Integrating Knowledge Graphs and GNNs',
+    venue: '59th ISOCARP World Planning Congress, Riyadh, 2025',
+    status: 'Oral presentation (forthcoming)',
     summary:
-      'Combines knowledge graph construction with semantic-aware GNNs to integrate remote sensing, GIS, and energy datasets; delivers ~20% accuracy gain in cross-sector impact forecasting.',
+      'Combines knowledge graph construction with semantic-aware GNNs to integrate remote sensing, GIS, and energy datasets, delivering a 20% accuracy gain in cross-sector forecasting.',
   },
   {
     title: 'From Pixels to Predicates: Structuring Urban Perception with Scene Graphs',
-    venue: '31st International Conference of CAADRIA · 2026',
-    status: 'Abstract accepted · full paper submitted',
+    venue: '31st International Conference of CAADRIA, 2026',
+    status: 'Abstract accepted, full paper submitted',
     summary:
-      'Transforms street-view imagery into relational data through scene graphs and a heterogeneous graph autoencoder; uncovers safety perception patterns and demonstrates inter-city transferability.',
+      'Transforms street-view imagery into relational data through scene graphs and a heterogeneous graph autoencoder, revealing safety perception patterns with inter-city transferability.',
   },
   {
-    title:
-      'Chinese Superblocks Regeneration: Street Network Learning with an Edge-centred Unsupervised Graph Neural Network',
-    venue: '31st International Conference of CAADRIA · 2026',
+    title: 'Chinese Superblocks Regeneration: Street Network Learning with an Edge-centred Unsupervised GNN',
+    venue: '31st International Conference of CAADRIA, 2026',
     status: 'Abstract accepted',
     summary:
-      'Proposes a self-supervised GNN pipeline over 7,000 street segments across seven Chinese cities, identifying four structural street types to guide regeneration strategies.',
+      'Introduces a self-supervised GNN over 7,000 street segments to identify structural street types and recommend regeneration strategies.',
   },
   {
     title:
-      'Research on Regional Urban Development Level Based on Club Convergence: The Yangtze River Delta Urban Agglomeration',
-    venue: 'China Urban Planning Annual Conference · 2024',
+      'Regional Urban Development Level Based on Club Convergence: The Yangtze River Delta Urban Agglomeration',
+    venue: 'China Urban Planning Annual Conference, 2024',
     status: 'Published',
     summary:
-      'Applies Markov transition and spatial Markov chain analysis to reveal divergent development trajectories and highlight “poverty trap” risks in western subregions.',
+      'Applies Markov transition analysis to reveal divergent development trajectories and highlight poverty-trap risks in western subregions.',
   },
 ];
 
 const academicActivities = [
-  '2025 · DigitalFutures Workshop – Habitat Representation: Graph Neural Networks for Urban Examination and Urban Design, Tongji University',
-  '2024 · Southeast University – University of Pennsylvania Joint Summer Workshop',
-  '2023 · DigitalFutures Workshop – Computational Design with Shape Grammar, Tongji University',
-  '2024 · First Prize · University-level Regional Planning and Design Project – Shunde Village Redevelopment',
-  '2023 & 2024 · Academic Merit Scholarship, Southeast University',
-  '2023 · Outstanding Bachelor’s Thesis Award, Shandong Jianzhu University',
+  '2025 DigitalFutures Workshop, Habitat Representation: Graph Neural Networks for Urban Design, Tongji University',
+  '2024 Southeast University and University of Pennsylvania Joint Summer Workshop',
+  '2023 DigitalFutures Workshop, Computational Design with Shape Grammar, Tongji University',
+  '2024 First Prize, University-level Regional Planning and Design Project, Shunde Village Redevelopment',
+  '2023 and 2024 Academic Merit Scholarship, Southeast University',
+  "2023 Outstanding Bachelor's Thesis Award, Shandong Jianzhu University",
 ];
 
-const App = () => (
-  <div className="page">
-    <header className="site-header">
-      <div>
-        <span className="site-subtitle">Curriculum Vitae</span>
-        <h1 className="site-title">Yunlong Liu</h1>
-        <p className="site-role">Graduate Researcher in Urban Data Intelligence · Southeast University</p>
-      </div>
-      <div className="header-actions">
-        <a className="download-btn" href={cvFile} target="_blank" rel="noreferrer">
-          Download Full CV (PDF)
-        </a>
-      </div>
-    </header>
+const rosterLabels = [
+  'URBAN ANALYTICS',
+  'GRAPH MODELS',
+  'CARBON SIMULATION',
+  'CITY DIGITAL TWIN',
+  'MULTIMODAL FUSION',
+  'KNOWLEDGE GRAPHS',
+  'DATA STORYTELLING',
+];
 
-    <main className="layout">
-      <aside className="side-panel">
-        <div className="monogram" aria-hidden="true">
-          <span>YL</span>
-        </div>
-        <div className="side-group">
-          <h2>Contact</h2>
-          <ul>
-            {contactLinks.map((link) => (
-              <li key={link.label}>
-                <span className="label">{link.label}</span>
-                {link.href ? (
-                  <a href={link.href}>{link.value}</a>
-                ) : (
-                  <span className="value">{link.value}</span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="side-group">
-          <h2>Research Interests</h2>
-          <ul>
-            {focusAreas.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="side-group">
-          <h2>Technical Focus</h2>
-          <ul>
-            {technicalExpertise.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="side-group">
-          <h2>Languages</h2>
-          <ul>
-            {languages.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </aside>
+const heroHeadline = ['DATA-FORWARD', 'URBAN', 'MODERNISM.'];
 
-      <div className="content">
-        <section id="profile">
-          <h2>Profile</h2>
-          <p>
-            Graduate student specialising in data-driven urban design and planning. My research focuses on building
-            interpretable pipelines that link environmental sensing, semantic representation, and machine learning to
-            support decision-making for complex urban systems.
-          </p>
-          <p>
-            I bridge multimodal data with knowledge graphs, graph neural networks, and large language models to deliver
-            holistic solutions spanning data acquisition, analysis, and policy insight. Current efforts emphasise urban
-            performance optimisation, carbon emission simulation, and street-level perception analysis.
-          </p>
-        </section>
+const heroSecondary =
+  'Bridging multimodal sensing, graph intelligence, and narrative strategy to build resilient urban systems.';
 
-        <section id="education">
-          <h2>Education</h2>
-          {education.map((item) => (
-            <article key={item.school} className="entry">
-              <div className="entry-period">{item.period}</div>
-              <div>
-                <h3>{item.school}</h3>
-                <p className="entry-role">{item.degree}</p>
-                <p>{item.details}</p>
-              </div>
-            </article>
+const App = () => {
+  const quickFacts: ContactLink[] = [
+    { ...contactLinks[0] },
+    { ...contactLinks[1] },
+    { label: 'Languages', value: languages.join(' / ') },
+  ];
+
+  return (
+    <div className="page dark-surface">
+      <header className="hero" id="about">
+        <div className="hero-bar">
+          <span className="hero-tag">YUNLONG LIU / URBAN DATA ARCHITECT</span>
+          <nav className="hero-nav" aria-label="Primary">
+            {navLinks.map((link) => (
+              <a key={link.label} href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        <h1 className="hero-title">
+          {heroHeadline.map((line) => (
+            <span key={line}>{line}</span>
           ))}
-        </section>
+        </h1>
 
-        <section id="research">
-          <h2>Research Experience</h2>
-          {researchProjects.map((project) => (
-            <article key={project.title} className="entry">
-              <div className="entry-period">{project.period}</div>
-              <div>
+        <p className="hero-lead">
+          Graduate researcher specialising in data-informed urban design, building interpretable intelligence pipelines
+          for carbon, mobility, and perception challenges.
+        </p>
+        <p className="hero-secondary">{heroSecondary}</p>
+
+        <div className="hero-meta">
+          {quickFacts.map((fact) => (
+            <div key={fact.label} className="hero-meta-item">
+              <span className="meta-label">{fact.label}</span>
+              {fact.href ? (
+                <a href={fact.href}>{fact.value}</a>
+              ) : (
+                <span>{fact.value}</span>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className="hero-actions">
+          <a className="hero-button" href={cvFile} target="_blank" rel="noreferrer">
+            Download CV
+          </a>
+          <a className="hero-link" href="#contact">
+            Open to collaboration -&gt;
+          </a>
+        </div>
+      </header>
+
+      <main className="content-grid">
+        <section className="spotlight-section" id="research">
+          <div className="section-heading">
+            <span className="section-eyebrow">Research Programmes</span>
+            <div className="section-title">
+              <h2>Active And Upcoming Experiments</h2>
+              <p>
+                Edge-to-cloud toolchains for sustainable cities, connecting sensing infrastructure with predictive and
+                generative intelligence.
+              </p>
+            </div>
+          </div>
+
+          <div className="project-grid">
+            {researchProjects.map((project) => (
+              <article key={project.title} className={`project-card status-${project.status.toLowerCase()}`}>
+                <div className="card-header">
+                  <span className="status-badge">{project.status}</span>
+                  <span className="card-period">{project.period}</span>
+                </div>
                 <h3>{project.title}</h3>
-                <p className="entry-role">
-                  {project.affiliation} · {project.role}
+                <p className="card-role">
+                  {project.affiliation} / {project.role}
                 </p>
-                <ul className="highlights">
+                <ul>
                   {project.highlights.map((highlight) => (
                     <li key={highlight}>{highlight}</li>
                   ))}
                 </ul>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </section>
 
-        <section id="publications">
-          <h2>Publications & Presentations</h2>
-          <ol className="list">
+        <section className="capability-section" id="capabilities">
+          <div className="section-heading">
+            <span className="section-eyebrow">Systems And Craft</span>
+            <div className="section-title">
+              <h2>Toolkits In Rotation</h2>
+              <p>
+                Methods that intertwine scientific rigour, spatial insight, and human interpretation for measurable
+                urban impact.
+              </p>
+            </div>
+          </div>
+
+          <div className="capability-grid">
+            {capabilityColumns.map((column) => (
+              <div key={column.title} className="capability-column">
+                <h3>{column.title}</h3>
+                <ul>
+                  {column.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="timeline-section" id="background">
+          <div className="section-heading">
+            <span className="section-eyebrow">Foundations</span>
+            <div className="section-title">
+              <h2>Education And Formation</h2>
+              <p>
+                Cross-disciplinary training spanning architecture, computation, and planning theory underpins every
+                project.
+              </p>
+            </div>
+          </div>
+
+          <div className="timeline-grid">
+            {education.map((item) => (
+              <article key={item.school} className="timeline-card">
+                <span className="timeline-period">{item.period}</span>
+                <div>
+                  <h3>{item.school}</h3>
+                  <p className="timeline-degree">{item.degree}</p>
+                  <p>{item.details}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="publication-section" id="publications">
+          <div className="section-heading">
+            <span className="section-eyebrow">Discourse</span>
+            <div className="section-title">
+              <h2>Selected Publications</h2>
+              <p>Translating experiments into conferences and journals that shape urban technology debate.</p>
+            </div>
+          </div>
+
+          <ol className="publication-list">
             {publications.map((publication) => (
               <li key={publication.title}>
-                <strong>{publication.title}</strong>
-                <p className="meta">{publication.venue}</p>
-                <p className="status">{publication.status}</p>
+                <div className="publication-meta">
+                  <span className="status-badge">{publication.status}</span>
+                  <span className="publication-venue">{publication.venue}</span>
+                </div>
+                <h3>{publication.title}</h3>
                 <p>{publication.summary}</p>
               </li>
             ))}
           </ol>
         </section>
 
-        <section id="activities">
-          <h2>Academic Activities & Honours</h2>
-          <ul className="list">
+        <section className="activity-section" id="activities">
+          <div className="section-heading">
+            <span className="section-eyebrow">Community</span>
+            <div className="section-title">
+              <h2>Workshops And Honours</h2>
+              <p>Learning and sharing in global studios, technical fellowships, and award programmes.</p>
+            </div>
+          </div>
+
+          <ul className="activity-list">
             {academicActivities.map((activity) => (
               <li key={activity}>{activity}</li>
             ))}
           </ul>
         </section>
 
-        <section id="contact">
-          <h2>Collaboration Outlook</h2>
-          <p>
-            I welcome collaboration on urban data analytics, graph learning for planning practice, multimodal knowledge
-            graph construction, and carbon emission modelling. Opportunities related to workshops, consulting, or joint
-            research are of particular interest.
-          </p>
-          <a className="download-btn" href={cvFile} target="_blank" rel="noreferrer">
-            Download Full CV (PDF)
-          </a>
-        </section>
-      </div>
-    </main>
+        <section className="collaboration-section" id="contact">
+          <div className="section-heading">
+            <span className="section-eyebrow">Collaboration</span>
+            <div className="section-title">
+              <h2>Co-create The Next Urban Prototype</h2>
+              <p>
+                Keen to partner on research residencies, experimental studios, or data infrastructure for complex city
+                questions.
+              </p>
+            </div>
+          </div>
 
-    <footer className="site-footer">
-      © {new Date().getFullYear()} Yunlong Liu · Advancing data-informed urban intelligence
-    </footer>
-  </div>
-);
+          <div className="collaboration-grid">
+            <div className="collaboration-note">
+              <p>
+                I work across full-stack analytics, spatial computing, and narrative storytelling to make future urban
+                transitions understandable. Let us build platforms that align policy, technology, and lived experience.
+              </p>
+            </div>
+            <ul className="contact-links">
+              {contactLinks.map((link) => (
+                <li key={link.label}>
+                  <span>{link.label}</span>
+                  {link.href ? (
+                    <a href={link.href}>{link.value}</a>
+                  ) : (
+                    <span>{link.value}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <a className="hero-button ghost" href={cvFile} target="_blank" rel="noreferrer">
+              Download Full Portfolio
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer className="site-footer">
+        <div className="footer-roster">
+          {rosterLabels.map((label) => (
+            <span key={label}>{label}</span>
+          ))}
+        </div>
+        <p className="footer-note">
+          (c) {new Date().getFullYear()} Yunlong Liu // Advancing data-informed urban intelligence.
+        </p>
+      </footer>
+    </div>
+  );
+};
 
 export default App;

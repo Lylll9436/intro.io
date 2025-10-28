@@ -11,3 +11,6 @@ dist/
 
 # Vite cache
 .vite/
+
+# Agents
+AGENTS.md

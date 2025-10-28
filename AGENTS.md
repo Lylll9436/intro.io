@@ -48,6 +48,7 @@ Goal: provide Codex with structured control for MCP tools (Sequential Thinking, 
 - DuckDuckGo: use precise keywords and filters; return 3–5 reliable sources.
 - Context7: resolve library ID, fetch docs, cite version.
 - Serena: operate precisely; include symbol/file reference and reason.
+- Fetch: use it when need to check sth in project
 
 ## Tool Invocation Summary
 Tool Invocation Summary  
